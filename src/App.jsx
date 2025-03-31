@@ -1,20 +1,37 @@
 import React from 'react'
-import Login from './components/Login'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
 import Profile from './components/Profile'
-import Bio from './components/Bio'
-import Third from './components/Third'
+const Layout=()=>{
+  return (
+    <div>
+      <Navbar/>
+      <Outlet />
+    </div>
+  )
+}
 
+const routes = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children:[
+      {
+        path:'/',
+        element:<Home/>
+      },
+      {
+        path:'/profile',
+        element:<Profile/>
+      }
+    ]
+  }
+])
 
 const App = () => {
   return (
-    <div className='p-16'>
-      <Login  />
-      <Profile/>
-      <Bio/>
-      <br />
-      <Third/>
-      
-    </div>
+    <RouterProvider router={routes} />
   )
 }
 

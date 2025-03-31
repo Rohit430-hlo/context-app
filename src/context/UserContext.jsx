@@ -11,13 +11,19 @@ const UserContextProvider =({children})=>{
 
     // Step III-1 creating the state and the setter for the state
     const [user,setUser] = React.useState('')
-    const [bio, setBio] = React.useState('')
+    const [bio, setBio] = React.useState('');
+    const [contact, setContact] = React.useState('');
+    const [email, setEmail] = React.useState('');``
     
     const requiredVal = {
         user,
         setUser,
         bio,
-        setBio
+        setBio,
+        contact,
+        setContact,
+        email,
+        setEmail
     }
     
     // passing all the state values and state setters to the value prop of the provider
