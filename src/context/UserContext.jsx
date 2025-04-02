@@ -13,7 +13,8 @@ const UserContextProvider =({children})=>{
     const [user,setUser] = React.useState('')
     const [bio, setBio] = React.useState('');
     const [contact, setContact] = React.useState('');
-    const [email, setEmail] = React.useState('');``
+    const [email, setEmail] = React.useState('');
+    const [lightMode, setLightMode] = React.useState(false);
     
     const requiredVal = {
         user,
@@ -23,7 +24,9 @@ const UserContextProvider =({children})=>{
         contact,
         setContact,
         email,
-        setEmail
+        setEmail,
+        setLightMode,
+        lightMode
     }
     
     // passing all the state values and state setters to the value prop of the provider
