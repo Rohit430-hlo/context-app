@@ -1,5 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/UserContext';
+import { toast } from 'react-toastify';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
     const { setUser, setEmail, setContact, setBio } = useContext(UserContext);
@@ -28,10 +32,21 @@ const Home = () => {
         setContact(formData.contact);
         
         // Optional: Reset form or show success message
-        alert('Profile updated successfully!');
+        // alert('Profile updated successfully!');
+        toast.success("Your Form is Successfully Submited")
     }
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 1400,
+        autoplay:true,
+        autoplaySpeed:1400,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
     
   return (
+
     <div>
         <h1 className='text-2xl mb-6 text-center font-bold'>Home Page</h1>
         <p className='text-lg'>Welcome to the home page! This is where you can find the latest updates and news.</p>
@@ -73,6 +88,20 @@ const Home = () => {
             />
             <button type="submit" className='bg-blue-500 text-white text-center px-5 my-2 py-3 inline-block mx-auto'>Submit</button>
         </form>
+        {/* <button className='text-white bg-blue-700 rounded-lg p-2'>Click Me</button> */}
+
+        <div>
+           <Slider {...settings}>
+            {
+                [1,2,3,4,5,6,7].map((item , index)=>(
+                    <div key={index} className='w-[500px] bg-red-500 rounded-lg flex items-center'>
+                        <h1 className='text-9xl font-extrabold'>{item}</h1>
+                    </div>
+                ))
+            }
+
+           </Slider>
+        </div>
     </div>
   )
 }
